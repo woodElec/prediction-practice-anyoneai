@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+
+  test-prediction:
+    container_name: test-prediction
+    image: test-predict:0.0.1
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./templates:/app/templates
+    command: python app.py
