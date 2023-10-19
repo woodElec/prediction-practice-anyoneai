@@ -5,4 +5,5 @@ def predict(data):
     with open("iris_model.pkl", 'rb') as f:
         model = pickle.load(f)
 
-    return model.predict()
+    result = model.predict(data)
+    return list(result)
