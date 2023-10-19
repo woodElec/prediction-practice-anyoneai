@@ -1,25 +1,31 @@
-from flask import Flask, render_template, request
 import logging
+
+from flask import Flask, render_template, request
+import pandas as pd
 
 import predictor
 
+
 app = Flask(__name__)
+
+def read_data(request_file):
+    return pd.read_csv(request_file)
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
 
     if request.method == "POST":
         # Make predictions
-        '''if 'file' not in request.files:
+        if 'file' not in request.files:
             app.logger.info("No file")
             return "No file loaded"
         
         request_file = request.files.get('file')
 
         if request_file.filename == "":
-            return "No file selected"'''
+            return "No file selected"
 
-        data = [[5.1, 1.5, 4.5, 0.2], [5.1, 0.5, 4.5, 0.4]]
+        data = read_data(request_file=request_file)
         result = predictor.predict(data=data)
         return result
 
