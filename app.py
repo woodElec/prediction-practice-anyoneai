@@ -23,9 +23,10 @@ def predict():
         request_file = request.files.get('file')
 
         if request_file.filename == "":
-            return "No file selected"
+            return "No file selected -- ERROR"
 
-        data = read_data(request_file=request_file)
+        #data = read_data(request_file=request_file)
+        data = [[1.5, 4.3, 0.6, 1.2]]
         result = predictor.predict(data=data)
         return result
 
