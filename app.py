@@ -9,7 +9,6 @@ import predictor
 app = Flask(__name__)
 
 def read_data(request_file):
-    # This function does not work
     data = pd.read_csv(request_file)
     return data.iloc[:, 1:]
 
