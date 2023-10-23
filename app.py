@@ -9,8 +9,8 @@ import predictor
 app = Flask(__name__)
 
 def read_data(request_file):
-    # This function work!
-    return pd.read_csv(request_file)
+    data = pd.read_csv(request_file)
+    return data.iloc[:, 1:]
 
 @app.route("/predict", methods=["GET", "POST"])
 def predict():
@@ -26,8 +26,7 @@ def predict():
         if request_file.filename == "":
             return "No file selected -- ERROR"
 
-        #data = read_data(request_file=request_file)
-        data = [[1.5, 4.3, 0.6, 1.2]]
+        data = read_data(request_file=request_file)
         result = predictor.predict(data=data)
         return result
 
