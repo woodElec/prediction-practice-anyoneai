@@ -9,7 +9,7 @@ import predictor
 app = Flask(__name__)
 
 def read_data(request_file):
-    # This function does not work
+    # This function work!
     return pd.read_csv(request_file)
 
 @app.route("/predict", methods=["GET", "POST"])
