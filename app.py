@@ -16,7 +16,7 @@ def read_data(request_file):
 def predict():
 
     if request.method == "POST":
-        # Make predictions
+        # Make predictions of the input data 
         if 'file' not in request.files:
             app.logger.info("No file")
             return "No file loaded"
